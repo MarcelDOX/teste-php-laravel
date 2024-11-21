@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80" # Porta mapeada para acessar o Laravel
+    volumes:
+      - .:/var/www/html # Monta o código local no container
+    env_file:
+      - .env # Carrega variáveis do arquivo .env
+    working_dir: /var/www/html

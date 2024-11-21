@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DocumentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(DocumentController::class)->group(function () {
+    Route::view('/documents', 'documents.import');
+    Route::post('/documents/import', 'import');
+    Route::get('/documents/dispatch', 'dispatch');
 });
